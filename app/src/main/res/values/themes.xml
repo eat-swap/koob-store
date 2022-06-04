@@ -2,8 +2,8 @@
 	<!-- Base application theme. -->
 	<style name="Theme.KoobStore" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 		<!-- Primary brand color. -->
-		<item name="colorPrimary">#29B6F6</item>
-		<item name="colorPrimaryVariant">#42A5F5</item>
+		<item name="colorPrimary">#01579B</item>
+		<item name="colorPrimaryVariant">#0D47A1</item>
 		<item name="colorOnPrimary">@color/black</item>
 		<!-- Secondary brand color. -->
 		<item name="colorSecondary">#FFCA28</item>
