@@ -27,14 +27,14 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="24dp"
+		android:layout_marginLeft="36dp"
+		android:layout_marginRight="36dp"
 		android:gravity="center"
 		android:text="@string/app_description"
 		android:textColor="#0D47A1"
 		android:textSize="24sp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.5"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+		app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+		tools:ignore="MissingConstraints" />
 
 	<Button
 		android:id="@+id/login_button"
