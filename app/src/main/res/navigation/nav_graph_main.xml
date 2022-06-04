@@ -9,5 +9,32 @@
 		android:id="@+id/welcomeMain"
 		android:name="org.eatswap.koobstore.modules.welcome.WelcomeMain"
 		android:label="fragment_welcome_main"
-		tools:layout="@layout/fragment_welcome_main" />
+		tools:layout="@layout/fragment_welcome_main" >
+		<action
+			android:id="@+id/action_welcomeMain_to_welcomeLoginFragment"
+			app:destination="@id/welcomeLoginFragment"
+			app:enterAnim="@anim/nav_default_enter_anim"
+			app:exitAnim="@anim/nav_default_exit_anim"
+			app:popUpTo="@id/welcomeMain"
+			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+			app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+		<action
+			android:id="@+id/action_welcomeMain_to_welcomeRegisterFragment"
+			app:destination="@id/welcomeRegisterFragment"
+			app:enterAnim="@anim/nav_default_enter_anim"
+			app:exitAnim="@anim/nav_default_exit_anim"
+			app:popUpTo="@id/welcomeMain"
+			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+			app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+	</fragment>
+	<fragment
+		android:id="@+id/welcomeLoginFragment"
+		android:name="org.eatswap.koobstore.modules.welcome.WelcomeLoginFragment"
+		android:label="fragment_welcome_login"
+		tools:layout="@layout/fragment_welcome_login" />
+	<fragment
+		android:id="@+id/welcomeRegisterFragment"
+		android:name="org.eatswap.koobstore.modules.welcome.WelcomeRegisterFragment"
+		android:label="fragment_welcome_register"
+		tools:layout="@layout/fragment_welcome_register" />
 </navigation>
