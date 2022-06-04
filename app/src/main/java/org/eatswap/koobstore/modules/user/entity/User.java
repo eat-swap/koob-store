@@ -3,6 +3,8 @@ package org.eatswap.koobstore.modules.user.entity;
 import org.eatswap.koobstore.base.BaseEntity;
 import org.greenrobot.greendao.annotation.NotNull;
 
+import java.util.Date;
+
 public class User extends BaseEntity {
     @NotNull
     private String username;
@@ -24,5 +26,15 @@ public class User extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public User(Long id, Date createdAt, Date updatedAt, String username, String password) {
+        super(id, createdAt, updatedAt);
+        this.username = username;
+        this.password = password;
+    }
+
+    public User() {
+        super();
     }
 }
