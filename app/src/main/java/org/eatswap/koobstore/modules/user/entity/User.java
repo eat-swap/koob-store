@@ -1,15 +1,11 @@
 package org.eatswap.koobstore.modules.user.entity;
 
-import org.eatswap.koobstore.base.BaseEntity;
-import org.greenrobot.greendao.annotation.NotNull;
+import com.orm.SugarRecord;
 
-import java.util.Date;
+public class User extends SugarRecord<User> {
 
-public class User extends BaseEntity {
-    @NotNull
     private String username;
 
-    @NotNull
     private String password;
 
     public String getUsername() {
@@ -28,8 +24,7 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public User(Long id, Date createdAt, Date updatedAt, String username, String password) {
-        super(id, createdAt, updatedAt);
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
