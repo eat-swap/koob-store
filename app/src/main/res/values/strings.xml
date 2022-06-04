@@ -2,4 +2,7 @@
 	<string name="app_name">KoobStore</string>
 	<string name="login">Login</string>
 	<string name="register">Register</string>
+	<string name="app_description">
+		KoobStore is a simple Android app that allows you to buy books.
+	</string>
 </resources>

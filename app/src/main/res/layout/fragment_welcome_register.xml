@@ -7,7 +7,7 @@
 	tools:context=".modules.welcome.WelcomeRegisterFragment">
 
 	<TextView
-		android:id="@+id/textView"
+		android:id="@+id/textViewTitle"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:gravity="center"
