@@ -1,7 +1,6 @@
-package org.eatswap.koobstore.modules.user.dao
+package org.eatswap.koobstore.modules.user.data
 
 import androidx.room.*
-import org.eatswap.koobstore.modules.user.entity.User
 
 @Dao
 interface UserDao {
