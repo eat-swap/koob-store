@@ -5,4 +5,10 @@
 	<string name="app_description">
 		KoobStore is a simple Android app that allows you to buy books.
 	</string>
+	<string name="input_hint_username">
+		Username
+	</string>
+	<string name="input_hint_password">
+		Password
+	</string>
 </resources>
