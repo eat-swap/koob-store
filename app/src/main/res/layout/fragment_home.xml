@@ -4,8 +4,7 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/home_container"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".home.HomeFragment">
+	android:layout_height="match_parent">
 
 	<com.google.android.material.bottomnavigation.BottomNavigationView
 		android:layout_width="match_parent"
@@ -13,5 +12,18 @@
 		android:id="@+id/bottom_navigation"
 		app:menu="@menu/menu_home"
 		app:layout_constraintBottom_toBottomOf="parent"/>
+
+	<androidx.fragment.app.FragmentContainerView
+		android:id="@+id/navigation_home"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:defaultNavHost="true"
+		android:name="androidx.navigation.fragment.NavHostFragment"
+		app:navGraph="@navigation/nav_graph_home"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintBottom_toTopOf="@id/bottom_navigation" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

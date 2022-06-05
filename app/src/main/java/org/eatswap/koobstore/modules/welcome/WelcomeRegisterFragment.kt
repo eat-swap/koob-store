@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
 import org.eatswap.koobstore.base.BusinessException
@@ -47,7 +48,8 @@ class WelcomeRegisterFragment : Fragment() {
 				return@setOnClickListener
 			}
 
-			Toast.makeText(context, "Registered successfully", Toast.LENGTH_SHORT).show()
+			Toast.makeText(context, "Registered successfully, please login", Toast.LENGTH_SHORT).show()
+			findNavController().navigate(R.id.action_welcomeRegisterFragment_to_welcomeLoginFragment)
 		}
 
 		return v

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
 import org.eatswap.koobstore.base.BusinessException
@@ -45,6 +46,7 @@ class WelcomeLoginFragment : Fragment() {
 			}
 
 			Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
+			findNavController().navigate(R.id.action_welcomeLoginFragment_to_homeFragment)
 		}
 
 		// Inflate the layout for this fragment
