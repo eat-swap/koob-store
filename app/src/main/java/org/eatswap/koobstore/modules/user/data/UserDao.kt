@@ -15,11 +15,11 @@ interface UserDao {
 	suspend fun delete(user: User)
 
 	// Get User by ID
-	@Query("SELECT * FROM user WHERE id = :id")
+	@Query("SELECT * FROM users WHERE id = :id")
 	suspend fun findById(id: String): User?
 
 	// Get User by Username
-	@Query("SELECT * FROM user WHERE username = :username")
+	@Query("SELECT * FROM users WHERE username = :username")
 	suspend fun findByUsername(username: String): User?
 
 }
