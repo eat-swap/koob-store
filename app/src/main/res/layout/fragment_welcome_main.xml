@@ -6,6 +6,18 @@
 	android:layout_height="match_parent"
 	tools:context=".MainActivity">
 
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="0dp"
+		android:layout_height="?attr/actionBarSize"
+		android:background="?attr/colorPrimary"
+		android:theme="@style/ThemeOverlay.Material3.Dark"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:popupTheme="@style/ThemeOverlay.Material3.Light"
+		tools:ignore="MissingConstraints" />
+
 	<TextView
 		android:id="@+id/textViewTitle"
 		android:layout_width="wrap_content"
