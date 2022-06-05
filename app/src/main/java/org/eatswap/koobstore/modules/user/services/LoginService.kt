@@ -19,15 +19,20 @@ class LoginService(private val context: KoobApplication) {
 			throw BusinessException("Invalid password")
 		}
 		_loggedInUser = user.username
+		_loggedInUserId = user.id
 		return true
 	}
 
 	fun logout() {
 		_loggedInUser = null
+		_loggedInUserId = null
 	}
 
 	companion object {
 		private var _loggedInUser: String? = null
 		val loggedInUser get() = _loggedInUser
+
+		private var _loggedInUserId: Int? = null
+		val loggedInUserId get() = _loggedInUserId
 	}
 }
