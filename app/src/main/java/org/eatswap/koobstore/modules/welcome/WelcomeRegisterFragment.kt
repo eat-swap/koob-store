@@ -11,6 +11,7 @@ import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
 import org.eatswap.koobstore.databinding.FragmentWelcomeRegisterBinding
 import org.eatswap.koobstore.modules.user.services.RegisterService
+import org.mindrot.jbcrypt.BCrypt
 
 class WelcomeRegisterFragment : Fragment() {
 
@@ -36,8 +37,10 @@ class WelcomeRegisterFragment : Fragment() {
 		v.findViewById<Button>(R.id.buttonRegister).setOnClickListener {
 			val username = binding.outlinedTextFieldUsername.editText?.text.toString()
 			val password = binding.outlinedTextFieldPassword.editText?.text.toString()
-			Toast.makeText(context, "$username:$password", Toast.LENGTH_SHORT).show()
-			val ok = registerService.registerUser(username, password)
+			val passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt())
+
+			Toast.makeText(context, "$username:$passwordHashed", Toast.LENGTH_SHORT).show()
+			val ok = registerService.registerUser(username, passwordHashed)
 
 			if (ok) {
 				Toast.makeText(context, "Registered", Toast.LENGTH_SHORT).show()
