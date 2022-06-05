@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentContainerView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
 import org.eatswap.koobstore.databinding.FragmentHomeBinding
@@ -29,6 +33,11 @@ class HomeFragment : Fragment() {
 		_loginService = LoginService(activity?.application as KoobApplication)
 
 		val v = binding.root
+		val nc = requireActivity().findNavController(R.id.navigation_home)
+
+		v.findViewById<BottomNavigationView>(R.id.bottom_nav).setOnItemSelectedListener {
+			NavigationUI.onNavDestinationSelected(it, nc)
+		}
 
 		return v
 	}
