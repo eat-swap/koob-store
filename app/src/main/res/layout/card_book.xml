@@ -47,6 +47,22 @@
 				android:textSize="12sp" />
 		</LinearLayout>
 
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="42dp"
+			android:orientation="horizontal">
+
+			<Button
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginLeft="12dp"
+				android:layout_marginRight="12dp"
+				android:id="@+id/book_details"
+				android:text="@string/view_details"
+				/>
+
+		</LinearLayout>
+
 	</LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

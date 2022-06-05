@@ -1,5 +1,6 @@
 package org.eatswap.koobstore.modules.orders.data
 
+import kotlinx.coroutines.runBlocking
 import org.eatswap.koobstore.modules.book.data.Book
 import org.eatswap.koobstore.modules.book.data.BookDao
 
@@ -15,9 +16,11 @@ data class Order(
 
 			val items = mutableListOf<Pair<Book, Int>>()
 
-			for (i in intArr.indices step 2) {
-				bookDao.findById(intArr[i])?.let {
-					items.add(Pair(it, intArr[i + 1].toInt()))
+			runBlocking {
+				for (i in intArr.indices step 2) {
+					bookDao.findById(intArr[i])?.let {
+						items.add(Pair(it, intArr[i + 1].toInt()))
+					}
 				}
 			}
 

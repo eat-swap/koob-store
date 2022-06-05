@@ -1,6 +1,7 @@
 package org.eatswap.koobstore.modules.cart
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
@@ -36,4 +37,13 @@ class CartViewModel(private val cartDao: CartDao) : ViewModel() {
 		}
 	}
 
+}
+
+class CartViewModelFactory(private val cartDao: CartDao) : ViewModelProvider.Factory {
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
+		if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
+			return CartViewModel(cartDao) as T
+		}
+		throw IllegalArgumentException("Unknown ViewModel class")
+	}
 }

@@ -34,4 +34,7 @@
 	<string name="title_home">Home</string>
 	<string name="title_dashboard">Dashboard</string>
 	<string name="title_notifications">Notifications</string>
+	<string name="detailed_image">Detailed Image</string>
+	<string name="add_to_cart">Add to Cart</string>
+	<string name="view_details">View Details</string>
 </resources>

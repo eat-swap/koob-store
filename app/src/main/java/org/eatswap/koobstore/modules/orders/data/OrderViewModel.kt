@@ -1,6 +1,7 @@
 package org.eatswap.koobstore.modules.orders.data
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
@@ -35,4 +36,17 @@ class OrderViewModel(private val orderEntityDao: OrderEntityDao) : ViewModel() {
 		return orderEntityDao.findByUserId(userId)
 	}
 
+}
+
+/**
+ * Template code, can copy and paste into any project
+ */
+class OrderViewModelFactory(private val dataSource: OrderEntityDao) : ViewModelProvider.Factory {
+	@Suppress("unchecked_cast")
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
+		if (modelClass.isAssignableFrom(OrderViewModel::class.java)) {
+			return OrderViewModel(dataSource) as T
+		}
+		throw IllegalArgumentException("Unknown ViewModel class")
+	}
 }

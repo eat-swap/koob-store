@@ -19,5 +19,5 @@ interface BookDao {
 	fun findAll(): List<Book>
 
 	@Query("SELECT * FROM books WHERE id = :id")
-	fun findById(id: String): Book?
+	suspend fun findById(id: String): Book?
 }
