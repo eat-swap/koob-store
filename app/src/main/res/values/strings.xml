@@ -17,4 +17,13 @@
 	<string name="input_hint_password">
 		Password
 	</string>
+	<string name="browse">
+		Browse
+	</string>
+	<string name="cart">
+		Cart
+	</string>
+	<string name="orders">
+		Orders
+	</string>
 </resources>
