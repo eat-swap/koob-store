@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
 import org.eatswap.koobstore.databinding.FragmentWelcomeRegisterBinding
+import org.eatswap.koobstore.modules.user.services.RegisterService
 
 class WelcomeRegisterFragment : Fragment() {
 
@@ -19,22 +21,32 @@ class WelcomeRegisterFragment : Fragment() {
 	private var _binding: FragmentWelcomeRegisterBinding? = null
 	private val binding get() = _binding!!
 
+	private var _registerService: RegisterService? = null
+	private val registerService get() = _registerService!!
+
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View? {
 		_binding = FragmentWelcomeRegisterBinding.inflate(inflater, container, false)
+		_registerService = RegisterService(activity?.application as KoobApplication)
 
 		val v = binding.root
 
 		v.findViewById<Button>(R.id.buttonRegister).setOnClickListener {
-			val str = binding.outlinedTextFieldUsername.editText?.text.toString()
-			Toast.makeText(context, str.length.toString(), Toast.LENGTH_SHORT).show()
+			val username = binding.outlinedTextFieldUsername.editText?.text.toString()
+			val password = binding.outlinedTextFieldPassword.editText?.text.toString()
+			Toast.makeText(context, "$username:$password", Toast.LENGTH_SHORT).show()
+			val ok = registerService.registerUser(username, password)
+
+			if (ok) {
+				Toast.makeText(context, "Registered", Toast.LENGTH_SHORT).show()
+			} else {
+				Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+			}
 		}
 
 		return v
 	}
 
-	companion object {
-	}
 }
