@@ -63,4 +63,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
     implementation 'org.mindrot:jbcrypt:0.4'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 }
