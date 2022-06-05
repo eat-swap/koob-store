@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
+import org.eatswap.koobstore.base.BusinessException
 import org.eatswap.koobstore.databinding.FragmentWelcomeRegisterBinding
 import org.eatswap.koobstore.modules.user.services.RegisterService
 import org.mindrot.jbcrypt.BCrypt
@@ -40,13 +41,15 @@ class WelcomeRegisterFragment : Fragment() {
 			val passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt())
 
 			Toast.makeText(context, "$username:$passwordHashed", Toast.LENGTH_SHORT).show()
-			val ok = registerService.registerUser(username, passwordHashed)
 
-			if (ok) {
-				Toast.makeText(context, "Registered", Toast.LENGTH_SHORT).show()
-			} else {
-				Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+			try {
+				registerService.registerUser(username, passwordHashed)
+			} catch (e: BusinessException) {
+				Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
 			}
+
+			Toast.makeText(context, "Registered successfully", Toast.LENGTH_SHORT).show()
 		}
 
 		return v

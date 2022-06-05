@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import org.eatswap.koobstore.base.BusinessException
 
 class UserViewModel(private val userDao: UserDao) : ViewModel() {
 	private fun insert(user: User) {
@@ -31,14 +32,22 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
 		runBlocking {
 			existingUser = userDao.findByUsername(username)
 		}
+
 		if (existingUser != null) {
-			// User already exists
-			return false
+			throw BusinessException("Username already exists")
 		}
 
 		val user = User(0, username, password)
 		insert(user)
 		return true
+	}
+
+	fun findByUsername(username: String) : User? {
+		var user: User? = null
+		runBlocking {
+			user = userDao.findByUsername(username)
+		}
+		return user
 	}
 }
 
