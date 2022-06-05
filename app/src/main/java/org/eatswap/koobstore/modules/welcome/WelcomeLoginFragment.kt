@@ -1,5 +1,6 @@
 package org.eatswap.koobstore.modules.welcome
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
 import org.eatswap.koobstore.base.BusinessException
 import org.eatswap.koobstore.databinding.FragmentWelcomeLoginBinding
+import org.eatswap.koobstore.modules.home.HomepageActivity
 import org.eatswap.koobstore.modules.user.services.LoginService
 
 class WelcomeLoginFragment : Fragment() {
@@ -46,7 +48,12 @@ class WelcomeLoginFragment : Fragment() {
 			}
 
 			Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
-			findNavController().navigate(R.id.action_welcomeLoginFragment_to_homeFragment)
+
+			val intent = Intent(context, HomepageActivity::class.java)
+			startActivity(intent)
+
+			requireActivity().finish()
+
 		}
 
 		// Inflate the layout for this fragment

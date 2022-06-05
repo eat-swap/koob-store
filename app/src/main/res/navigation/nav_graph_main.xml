@@ -33,18 +33,7 @@
 		android:id="@+id/welcomeLoginFragment"
 		android:name="org.eatswap.koobstore.modules.welcome.WelcomeLoginFragment"
 		android:label="fragment_welcome_login"
-		tools:layout="@layout/fragment_welcome_login" >
-		<action
-			android:id="@+id/action_welcomeLoginFragment_to_homeFragment"
-			app:destination="@id/homeFragment"
-			app:enterAnim="@anim/nav_default_enter_anim"
-			app:exitAnim="@anim/nav_default_exit_anim"
-			app:launchSingleTop="true"
-			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-			app:popExitAnim="@anim/nav_default_pop_exit_anim"
-			app:popUpTo="@id/welcomeMainFragment"
-			app:popUpToInclusive="true" />
-	</fragment>
+		tools:layout="@layout/fragment_welcome_login" />
 	<fragment
 		android:id="@+id/welcomeRegisterFragment"
 		android:name="org.eatswap.koobstore.modules.welcome.WelcomeRegisterFragment"
@@ -60,9 +49,4 @@
 			app:popUpTo="@id/welcomeMainFragment"
 			app:popUpToInclusive="true" />
 	</fragment>
-	<fragment
-		android:id="@+id/homeFragment"
-		android:name="org.eatswap.koobstore.modules.home.HomeFragment"
-		android:label="fragment_home"
-		tools:layout="@layout/fragment_home" />
 </navigation>

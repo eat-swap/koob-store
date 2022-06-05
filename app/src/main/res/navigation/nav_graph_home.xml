@@ -10,14 +10,4 @@
 		android:name="org.eatswap.koobstore.modules.home.BrowseFragment"
 		android:label="fragment_browse"
 		tools:layout="@layout/fragment_browse" />
-	<fragment
-		android:id="@+id/page_cart"
-		android:name="org.eatswap.koobstore.modules.home.CartFragment"
-		android:label="fragment_cart"
-		tools:layout="@layout/fragment_cart" />
-	<fragment
-		android:id="@+id/page_orders"
-		android:name="org.eatswap.koobstore.modules.home.OrdersFragment"
-		android:label="fragment_orders"
-		tools:layout="@layout/fragment_orders" />
 </navigation>
