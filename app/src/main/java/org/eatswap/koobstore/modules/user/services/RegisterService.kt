@@ -10,7 +10,6 @@ class RegisterService(private val context: KoobApplication) {
 	).create(UserViewModel::class.java)
 
 	fun registerUser(username: String, password: String): Boolean {
-		userViewModel.addNewUser(username, password)
-		return true
+		return userViewModel.addNewUser(username, password)
 	}
 }

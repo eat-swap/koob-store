@@ -2,9 +2,12 @@ package org.eatswap.koobstore.modules.user.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(indices = [
+	Index(value = ["id", "username"], unique = true)
+])
 data class User (
 	@PrimaryKey(autoGenerate = true)
 	val id: Int = 0,

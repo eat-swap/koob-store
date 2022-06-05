@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class UserViewModel(private val userDao: UserDao) : ViewModel() {
 	private fun insert(user: User) {
@@ -24,9 +25,20 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
 		}
 	}
 
-	fun addNewUser(username: String, password: String) {
+	fun addNewUser(username: String, password: String) : Boolean {
+		// Search for existing user
+		var existingUser: User? = null
+		runBlocking {
+			existingUser = userDao.findByUsername(username)
+		}
+		if (existingUser != null) {
+			// User already exists
+			return false
+		}
+
 		val user = User(0, username, password)
 		insert(user)
+		return true
 	}
 }
 
