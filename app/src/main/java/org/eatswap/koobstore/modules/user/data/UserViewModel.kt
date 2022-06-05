@@ -34,7 +34,7 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
  * Template code, can copy and paste into any project
  */
 class UserViewModelFactory(private val dataSource: UserDao) : ViewModelProvider.Factory {
-	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
 		if (modelClass.isAssignableFrom(UserViewModel::class.java)) {
 			return UserViewModel(dataSource) as T
 		}
