@@ -9,7 +9,7 @@ import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import org.eatswap.koobstore.R
 
-class WelcomeMain : Fragment() {
+class WelcomeMainFragment : Fragment() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 	}

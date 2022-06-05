@@ -33,12 +33,12 @@ class WelcomeLoginFragment : Fragment() {
 
 		val v = binding.root
 
-		v.findViewById<Button>(R.id.login_button).setOnClickListener {
+		v.findViewById<Button>(R.id.buttonLogin).setOnClickListener {
 			val username = binding.outlinedTextFieldUsername.editText?.text.toString()
 			val password = binding.outlinedTextFieldPassword.editText?.text.toString()
 
 			try {
-				loginService.loginUser(username, password)
+				loginService.login(username, password)
 			} catch (e: BusinessException) {
 				Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
 				return@setOnClickListener

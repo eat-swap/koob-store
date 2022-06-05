@@ -40,8 +40,6 @@ class WelcomeRegisterFragment : Fragment() {
 			val password = binding.outlinedTextFieldPassword.editText?.text.toString()
 			val passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt())
 
-			Toast.makeText(context, "$username:$passwordHashed", Toast.LENGTH_SHORT).show()
-
 			try {
 				registerService.registerUser(username, passwordHashed)
 			} catch (e: BusinessException) {

@@ -11,7 +11,7 @@ class LoginService(private val context: KoobApplication) {
 		context.database.userDao()
 	).create(UserViewModel::class.java)
 
-	fun loginUser(username: String, password: String): Boolean {
+	fun login(username: String, password: String): Boolean {
 		val user = userViewModel.findByUsername(username) ?: throw BusinessException(
 			"User not found"
 		)
@@ -20,6 +20,10 @@ class LoginService(private val context: KoobApplication) {
 		}
 		_loggedInUser = user.username
 		return true
+	}
+
+	fun logout() {
+		_loggedInUser = null
 	}
 
 	companion object {

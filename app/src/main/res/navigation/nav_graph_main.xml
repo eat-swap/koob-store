@@ -3,11 +3,11 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/nav_graph_main"
-	app:startDestination="@id/welcomeMain">
+	app:startDestination="@id/welcomeMainFragment">
 
 	<fragment
-		android:id="@+id/welcomeMain"
-		android:name="org.eatswap.koobstore.modules.welcome.WelcomeMain"
+		android:id="@+id/welcomeMainFragment"
+		android:name="org.eatswap.koobstore.modules.welcome.WelcomeMainFragment"
 		android:label="fragment_welcome_main"
 		tools:layout="@layout/fragment_welcome_main" >
 		<action
@@ -15,7 +15,7 @@
 			app:destination="@id/welcomeLoginFragment"
 			app:enterAnim="@anim/nav_default_enter_anim"
 			app:exitAnim="@anim/nav_default_exit_anim"
-			app:popUpTo="@id/welcomeMain"
+			app:popUpTo="@id/welcomeMainFragment"
 			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
 			app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 		<action
@@ -23,7 +23,7 @@
 			app:destination="@id/welcomeRegisterFragment"
 			app:enterAnim="@anim/nav_default_enter_anim"
 			app:exitAnim="@anim/nav_default_exit_anim"
-			app:popUpTo="@id/welcomeMain"
+			app:popUpTo="@id/welcomeMainFragment"
 			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
 			app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 	</fragment>
