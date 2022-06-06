@@ -41,7 +41,7 @@ class WelcomeMainFragment : Fragment() {
 		v.findViewById<Button>(R.id.fill_database_button)?.setOnClickListener {
 			bookService.deleteAll()
 			for (i in 0..50) {
-				val book = Book(i, "Title $i", "Author $i", "ISBN $i", "Description $i", "https://img.bytepic.cn/blindbox1.jpg", Random.nextDouble() * 100)
+				val book = Book(0, "Title $i", "Author $i", "ISBN $i", "Description $i", "https://img.bytepic.cn/blindbox1.jpg", Random.nextDouble() * 100)
 				bookService.insert(book)
 			}
 			Toast.makeText(requireContext(), "Database filled", Toast.LENGTH_SHORT).show()
