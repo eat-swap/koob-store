@@ -20,6 +20,6 @@ data class Cart(
 	val bookId: Int,
 
 	@ColumnInfo(name = "quantity")
-	val quantity: Int
+	var quantity: Int
 
 )

@@ -18,6 +18,10 @@ interface CartDao {
 	@Query("SELECT * FROM cart WHERE user_id = :userId")
 	fun findByUserId(userId: String): List<Cart>
 
+	// findByUserIdAndBookId
+	@Query("SELECT * FROM cart WHERE user_id = :userId AND book_id = :bookId")
+	fun findByUserIdAndBookId(userId: String, bookId: String): Cart?
+
 	// deleteByUserId
 	@Query("DELETE FROM cart WHERE user_id = :userId")
 	fun deleteByUserId(userId: String)

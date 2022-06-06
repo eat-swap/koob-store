@@ -7,31 +7,36 @@ import kotlinx.coroutines.launch
 
 class CartViewModel(private val cartDao: CartDao) : ViewModel() {
 
-	private fun insert(item: Cart) {
+	fun insert(item: Cart) {
 		viewModelScope.launch {
 			cartDao.insert(item)
 		}
 	}
 
-	private fun delete(item: Cart) {
+	fun delete(item: Cart) {
 		viewModelScope.launch {
 			cartDao.delete(item)
 		}
 	}
 
-	private fun update(item: Cart) {
+	fun update(item: Cart) {
 		viewModelScope.launch {
 			cartDao.update(item)
 		}
 	}
 
 	// findByUserId
-	private fun findByUserId(userId: String) : List<Cart> {
+	fun findByUserId(userId: String) : List<Cart> {
 		return cartDao.findByUserId(userId)
 	}
 
+	// findByUserIdAndBookId
+	fun findByUserIdAndBookId(userId: String, bookId: String) : Cart? {
+		return cartDao.findByUserIdAndBookId(userId, bookId)
+	}
+
 	// deleteByUserId
-	private fun deleteByUserId(userId: String) {
+	fun deleteByUserId(userId: String) {
 		viewModelScope.launch {
 			cartDao.deleteByUserId(userId)
 		}
