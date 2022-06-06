@@ -10,22 +10,24 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.internal.ViewUtils
+import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
 import org.eatswap.koobstore.databinding.FragmentHomeBinding
 import org.eatswap.koobstore.modules.book.data.Book
+import org.eatswap.koobstore.modules.book.services.BookService
 import org.eatswap.koobstore.modules.home.BookAdapter
 import org.eatswap.koobstore.utils.ui.GridSpacingItemDecoration
 import kotlin.random.Random
 
 class HomeFragment : Fragment() {
 
-	private var bookList: MutableList<Book>? = null
+	private var bookList: List<Book>? = null
 
 	private var _binding: FragmentHomeBinding? = null
-
-	// This property is only valid between onCreateView and
-	// onDestroyView.
 	private val binding get() = _binding!!
+
+	private var _bookService: BookService? = null
+	private val bookService get() = _bookService!!
 
 	@SuppressLint("RestrictedApi")
 	override fun onCreateView(
@@ -33,17 +35,12 @@ class HomeFragment : Fragment() {
 		container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View {
-		val homeViewModel =
-			ViewModelProvider(this).get(HomeViewModel::class.java)
+		_bookService = BookService(requireActivity().application as KoobApplication)
 
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
 		val v: View = binding.root
 
-		bookList = mutableListOf()
-
-		for (i in 0..10) {
-			bookList?.add(Book(i, "Title $i", "Author $i", "ISBN $i", "Description $i", "https://img.bytepic.cn/blindbox1.jpg", Random.nextDouble() * 100))
-		}
+		bookList = bookService.findAll()
 
 		val recyclerView = v.findViewById<RecyclerView>(R.id.recycler_view_browse)!!
 		recyclerView.layoutManager = GridLayoutManager(context, 2)

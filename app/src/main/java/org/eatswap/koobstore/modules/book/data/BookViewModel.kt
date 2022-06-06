@@ -8,28 +8,32 @@ import kotlinx.coroutines.runBlocking
 
 class BookViewModel(private val bookDao: BookDao) : ViewModel() {
 
-	private fun insert(book: Book) {
+	fun insert(book: Book) {
 		viewModelScope.launch {
 			bookDao.insert(book)
 		}
 	}
 
 	// update
-	private fun update(book: Book) {
+	fun update(book: Book) {
 		viewModelScope.launch {
 			bookDao.update(book)
 		}
 	}
 
 	// delete
-	private fun delete(book: Book) {
+	fun delete(book: Book) {
 		viewModelScope.launch {
 			bookDao.delete(book)
 		}
 	}
 
 	// Find all
-	fun findAll() : List<Book> = bookDao.findAll()
+	fun findAll() : List<Book> {
+		return runBlocking {
+			bookDao.findAll()
+		}
+	}
 
 	// Find by id
 	fun findById(id: Int) : Book? {
@@ -38,6 +42,13 @@ class BookViewModel(private val bookDao: BookDao) : ViewModel() {
 			ret = bookDao.findById(id.toString())
 		}
 		return ret
+	}
+
+	// Delete all
+	fun deleteAll() {
+		viewModelScope.launch {
+			bookDao.deleteAll()
+		}
 	}
 
 }

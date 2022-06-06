@@ -16,8 +16,12 @@ interface BookDao {
 
 	// Get books
 	@Query("SELECT * FROM books")
-	fun findAll(): List<Book>
+	suspend fun findAll(): List<Book>
 
 	@Query("SELECT * FROM books WHERE id = :id")
 	suspend fun findById(id: String): Book?
+
+	// Delete all books
+	@Query("DELETE FROM books")
+	suspend fun deleteAll()
 }

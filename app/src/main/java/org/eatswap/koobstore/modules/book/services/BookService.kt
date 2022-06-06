@@ -19,4 +19,12 @@ class BookService(private val context: KoobApplication) {
 		return bookViewModel.findById(id)
 	}
 
+	fun insert(book: Book) {
+		bookViewModel.insert(book)
+	}
+
+	fun deleteAll() {
+		bookViewModel.deleteAll()
+	}
+
 }
