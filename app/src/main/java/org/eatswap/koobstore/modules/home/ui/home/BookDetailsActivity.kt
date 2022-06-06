@@ -32,12 +32,9 @@ class BookDetailsActivity : AppCompatActivity() {
 
 		binding.textPrice.text = String.format("$%.2f", book.price)
 
-		binding.textDetails.text = """
-			Book Title: ${book.title}
-			Author: ${book.author}
-			ISBN: ${book.isbn}
-			Description: ${book.description}
-		""".trimIndent()
+		binding.textBookBasicInfo.text = "${book.title} | by ${book.author} | ${book.isbn}"
+
+		binding.textDetails.text = book.description
 
 		binding.buttonAddCart.setOnClickListener {
 			Toast.makeText(this, "Added to cart: ${book.title} | ${String.format("$%.2f", book.price)}", Toast.LENGTH_SHORT).show()
