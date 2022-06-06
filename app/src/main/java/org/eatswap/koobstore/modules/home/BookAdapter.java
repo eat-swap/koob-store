@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -20,7 +19,6 @@ import com.bumptech.glide.Glide;
 import org.eatswap.koobstore.R;
 import org.eatswap.koobstore.modules.book.data.Book;
 import org.eatswap.koobstore.modules.home.ui.home.BookDetailsActivity;
-import org.eatswap.koobstore.modules.home.ui.home.DetailsFragment;
 
 import java.util.List;
 

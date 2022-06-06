@@ -1,12 +1,11 @@
 package org.eatswap.koobstore.modules.home.ui.home
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import org.eatswap.koobstore.KoobApplication
-import org.eatswap.koobstore.R
 import org.eatswap.koobstore.databinding.ActivityBookDetailsBinding
 import org.eatswap.koobstore.modules.book.services.BookService
 

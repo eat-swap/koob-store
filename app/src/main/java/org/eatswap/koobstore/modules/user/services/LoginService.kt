@@ -1,7 +1,7 @@
 package org.eatswap.koobstore.modules.user.services
 
-import org.eatswap.koobstore.base.BusinessException
 import org.eatswap.koobstore.KoobApplication
+import org.eatswap.koobstore.base.BusinessException
 import org.eatswap.koobstore.modules.user.data.UserViewModel
 import org.eatswap.koobstore.modules.user.data.UserViewModelFactory
 import org.mindrot.jbcrypt.BCrypt
