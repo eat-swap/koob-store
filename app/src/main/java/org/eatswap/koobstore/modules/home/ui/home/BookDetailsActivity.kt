@@ -41,7 +41,7 @@ class BookDetailsActivity : AppCompatActivity() {
 		""".trimIndent()
 
 		binding.buttonAddCart.setOnClickListener {
-			Toast.makeText(this, "Added to cart: ${book.title} | ${String.format("$.2f", book.price)}", Toast.LENGTH_SHORT).show()
+			Toast.makeText(this, "Added to cart: ${book.title} | ${String.format("$%.2f", book.price)}", Toast.LENGTH_SHORT).show()
 		}
 
 		setContentView(v)
