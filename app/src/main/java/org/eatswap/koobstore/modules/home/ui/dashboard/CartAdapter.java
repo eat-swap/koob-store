@@ -1,6 +1,10 @@
 package org.eatswap.koobstore.modules.home.ui.dashboard;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -10,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import org.eatswap.koobstore.R;
 import org.eatswap.koobstore.modules.book.services.BookService;
@@ -57,18 +63,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = context == null ? parent.getContext() : context;
+        if (context == null) {
+            context = parent.getContext();
+        }
         View view = View.inflate(context, R.layout.card_cart, null);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: position: " + position);
         var cart = carts.get(position);
         var book = bookService.findById(cart.getBookId());
         if (book == null) {
-            throw new RuntimeException("Book not found");
+            // throw new RuntimeException("Book not found");
         }
+
+        Uri uri = Uri.parse(book.getImageUrl());
+        Glide.with(context).load(uri).into(holder.cartBookCover);
 
         holder.cartBookTitle.setText(book.getTitle());
         holder.cartBookCount.setText(String.format("$%.2f x%d", book.getPrice(), cart.getQuantity()));
@@ -92,7 +104,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return carts.size();
     }
 
     public CartAdapter(List<Cart> carts, BookService bookService, CartService cartService) {

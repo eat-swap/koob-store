@@ -1,8 +1,11 @@
 package org.eatswap.koobstore.modules.home.ui.home;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -63,6 +66,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: position: " + position);
         var book = books.get(position);
         holder.titleView.setText(book.getTitle());
         holder.priceView.setText(String.format("%.2f", book.getPrice()));

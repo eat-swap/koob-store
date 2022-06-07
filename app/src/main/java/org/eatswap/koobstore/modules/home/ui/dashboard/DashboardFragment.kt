@@ -1,6 +1,8 @@
 package org.eatswap.koobstore.modules.home.ui.dashboard
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +19,7 @@ import org.eatswap.koobstore.modules.book.services.BookService
 import org.eatswap.koobstore.modules.cart.Cart
 import org.eatswap.koobstore.modules.cart.CartService
 import org.eatswap.koobstore.modules.user.services.LoginService
+import kotlin.math.log
 
 class DashboardFragment : Fragment() {
 
@@ -59,6 +62,8 @@ class DashboardFragment : Fragment() {
 		val recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view_cart)
 
 		recyclerView.layoutManager = GridLayoutManager(context, 1)
+
+		Log.d(TAG, "onCreateView: " + _cartList?.size)
 
 		recyclerView.adapter = CartAdapter(
 			_cartList!!,
