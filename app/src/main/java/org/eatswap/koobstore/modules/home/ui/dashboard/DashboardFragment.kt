@@ -69,7 +69,7 @@ class DashboardFragment : Fragment() {
 		recyclerView.layoutManager = GridLayoutManager(context, 1)
 
 		recyclerView.addItemDecoration(
-			GridSpacingItemDecoration(1, ViewUtils.dpToPx(requireContext(), 10).toInt(), true)
+			GridSpacingItemDecoration(1, ViewUtils.dpToPx(requireContext(), 16).toInt(), true)
 		)
 
 		Log.d(TAG, "onCreateView: " + _cartList?.size)
@@ -87,18 +87,26 @@ class DashboardFragment : Fragment() {
 				.setMessage("Are you sure you want to checkout? Total price: ${binding.cartTotalPrice.text}")
 				.setPositiveButton("OK") { dialog, _ ->
 					val list = mutableListOf<Pair<Book, Int>>()
-					var totalAmount: Double = 0.0
+					var totalAmount = 0.0
 					for (cart in _cartList!!) {
 						val book = bookService.findById(cart.bookId)!!
 						list.add(Pair(book, cart.quantity))
 						totalAmount += book.price * cart.quantity
 					}
 
-					val order = Order(0, LoginService.loggedInUserId!!, mutableListOf(), LocalDateTime.now().toEpochSecond(
+					val order = Order(0, LoginService.loggedInUserId!!, list, LocalDateTime.now().toEpochSecond(
 						ZoneOffset.UTC), totalAmount)
 					orderService.insert(order)
 
 					cartService.removeAllByUserId(LoginService.loggedInUserId!!.toString())
+					_cartList = mutableListOf()
+					binding.cartTotalPrice.text = "$0.00"
+					recyclerView.adapter = CartAdapter(
+						_cartList!!,
+						bookService,
+						cartService,
+						binding.cartTotalPrice,
+					)
 
 					dialog.dismiss()
 				}

@@ -1,5 +1,7 @@
 package org.eatswap.koobstore.modules.orders.data
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import kotlinx.coroutines.runBlocking
 import org.eatswap.koobstore.modules.book.data.Book
 import org.eatswap.koobstore.modules.book.data.BookDao
@@ -43,6 +45,8 @@ data class Order(
 			itemIdCount.append(item.second)
 			itemIdCount.append(',')
 		}
+		Log.d(TAG, "toEntity: itemIdCount.toString() = [$itemIdCount]")
+
 		return OrderEntity(
 			id,
 			userId,
