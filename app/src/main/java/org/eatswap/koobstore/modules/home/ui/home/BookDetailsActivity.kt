@@ -37,7 +37,7 @@ class BookDetailsActivity : AppCompatActivity() {
 
 		binding.textPrice.text = String.format("$%.2f", book.price)
 
-		binding.textBookBasicInfo.text = "${book.title} | by ${book.author} | ${book.isbn}"
+		binding.textBookBasicInfo.text = "${book.title}\nBy ${book.author}\nISBN ${book.isbn}"
 
 		binding.textDetails.text = book.description
 

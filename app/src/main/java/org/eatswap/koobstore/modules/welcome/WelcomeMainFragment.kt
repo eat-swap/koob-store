@@ -56,10 +56,10 @@ class WelcomeMainFragment : Fragment() {
 			for (i in 0..50) {
 				val book = Book(
 					0,
-					"Title ${randomStr(6)}",
+					"Title ${randomStr(4)}",
 					"Author ${randomStr(8)}",
-					"ISBN ${randomISBN()}",
-					"Description ${randomStr(512)}",
+					"${randomISBN()}",
+					"Description ${randomStr(128)}",
 					"https://img.bytepic.cn/blindbox1.jpg",
 					Random.nextDouble() * 512,
 					"Category ${r.nextInt(5)}"
