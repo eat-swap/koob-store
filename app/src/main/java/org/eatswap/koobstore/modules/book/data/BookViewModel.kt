@@ -51,6 +51,13 @@ class BookViewModel(private val bookDao: BookDao) : ViewModel() {
 		}
 	}
 
+	// Find By Category
+	fun findByCategory(category: String) : List<Book> {
+		return runBlocking {
+			bookDao.findByCategory(category)
+		}
+	}
+
 }
 
 class BookViewModelFactory(private val bookDao: BookDao) : ViewModelProvider.Factory {

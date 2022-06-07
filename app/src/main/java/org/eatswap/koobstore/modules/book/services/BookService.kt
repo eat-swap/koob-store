@@ -27,4 +27,8 @@ class BookService(private val context: KoobApplication) {
 		bookViewModel.deleteAll()
 	}
 
+	fun findByCategory(category: String): List<Book> {
+		return bookViewModel.findByCategory(category)
+	}
+
 }

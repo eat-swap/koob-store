@@ -24,4 +24,8 @@ interface BookDao {
 	// Delete all books
 	@Query("DELETE FROM books")
 	suspend fun deleteAll()
+
+	// Find By Category
+	@Query("SELECT * FROM books WHERE category = :category")
+	suspend fun findByCategory(category: String): List<Book>
 }

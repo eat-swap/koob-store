@@ -30,5 +30,8 @@ data class Book(
 	@ColumnInfo(name = "price")
 	val price: Double,
 
+	@ColumnInfo(name = "category")
+	val category: String,
+
 	// No more useless columns here
 )
