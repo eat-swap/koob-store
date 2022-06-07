@@ -28,16 +28,16 @@ class OrderViewModel(private val orderEntityDao: OrderEntityDao) : ViewModel() {
 	}
 
 	// findById
-	fun findById(id: Long): OrderEntity? {
+	fun findById(id: Int): OrderEntity? {
 		return runBlocking {
 			orderEntityDao.findById(id.toString())
 		}
 	}
 
 	// findByUserId
-	fun findByUserId(userId: String): List<OrderEntity> {
+	fun findByUserId(userId: Int): List<OrderEntity> {
 		return runBlocking {
-			orderEntityDao.findByUserId(userId)
+			orderEntityDao.findByUserId(userId.toString())
 		}
 	}
 

@@ -16,6 +16,9 @@
 		android:theme="@style/Theme.KoobStore"
 		tools:targetApi="32">
 		<activity
+			android:name=".modules.home.ui.notifications.OrderDetailsActivity"
+			android:exported="false" />
+		<activity
 			android:name=".modules.home.ui.home.BookDetailsActivity"
 			android:exported="false" />
 		<activity

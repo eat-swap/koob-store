@@ -8,8 +8,12 @@ class OrderService(private val context: KoobApplication) {
 		context.database.orderEntityDao()
 	).create(OrderViewModel::class.java)
 
-	fun findByUserId(userId: Long): List<OrderEntity> {
-		return orderViewModel.findByUserId(userId.toString())
+	fun findByUserId(userId: Int): List<OrderEntity> {
+		return orderViewModel.findByUserId(userId)
+	}
+
+	fun findById(id: Int): OrderEntity? {
+		return orderViewModel.findById(id)
 	}
 
 	fun insert(order: Order) {
