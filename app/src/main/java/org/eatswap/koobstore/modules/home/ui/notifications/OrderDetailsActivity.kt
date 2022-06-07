@@ -24,7 +24,7 @@ class OrderDetailsActivity : AppCompatActivity() {
 
 		val v = binding.root
 		val i = this.intent!!
-		val oe = orderService.findById(i.getIntExtra("orderId", 0))!!
+		val oe = orderService.findById(i.getIntExtra("order_id", 0))!!
 		val o = Order.of(oe, (this.application as KoobApplication).database.bookDao())
 
 		val imgUri = Uri.parse(o.items[0].first.imageUrl)!!
