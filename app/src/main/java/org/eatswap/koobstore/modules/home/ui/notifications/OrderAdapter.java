@@ -1,6 +1,7 @@
 package org.eatswap.koobstore.modules.home.ui.notifications;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,10 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
         holder.buttonOrderDetails.setOnClickListener(v -> {
             Toast.makeText(context, "Order details " + order.getId(), Toast.LENGTH_SHORT).show();
+
+            var intent = new Intent(context, OrderDetailsActivity.class);
+            intent.putExtra("order_id", order.getId());
+            context.startActivity(intent);
         });
     }
 
