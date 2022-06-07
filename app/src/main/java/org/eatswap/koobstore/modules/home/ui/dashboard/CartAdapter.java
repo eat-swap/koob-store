@@ -76,7 +76,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         var cart = carts.get(position);
         var book = bookService.findById(cart.getBookId());
         if (book == null) {
-            // throw new RuntimeException("Book not found");
+            throw new RuntimeException("Book not found");
         }
 
         Uri uri = Uri.parse(book.getImageUrl());

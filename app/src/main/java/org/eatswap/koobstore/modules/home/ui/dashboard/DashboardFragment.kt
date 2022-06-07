@@ -1,5 +1,6 @@
 package org.eatswap.koobstore.modules.home.ui.dashboard
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.internal.ViewUtils
 import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.R
 import org.eatswap.koobstore.databinding.FragmentDashboardBinding
@@ -19,6 +21,7 @@ import org.eatswap.koobstore.modules.book.services.BookService
 import org.eatswap.koobstore.modules.cart.Cart
 import org.eatswap.koobstore.modules.cart.CartService
 import org.eatswap.koobstore.modules.user.services.LoginService
+import org.eatswap.koobstore.utils.ui.GridSpacingItemDecoration
 import kotlin.math.log
 
 class DashboardFragment : Fragment() {
@@ -34,6 +37,7 @@ class DashboardFragment : Fragment() {
 	private var _cartService: CartService? = null
 	private val cartService get() = _cartService!!
 
+	@SuppressLint("RestrictedApi")
 	override fun onCreateView(
 		inflater: LayoutInflater,
 		container: ViewGroup?,
@@ -48,20 +52,15 @@ class DashboardFragment : Fragment() {
 
 		val root: View = binding.root
 
-		_cartList = listOf(
-			Cart(
-			1,
-			1,
-			1,
-			10
-		)
-		)
-
-		// cartService.findAllByUserId(LoginService.loggedInUserId!!.toString())
+		_cartList = cartService.findAllByUserId(LoginService.loggedInUserId!!.toString())
 
 		val recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view_cart)
 
 		recyclerView.layoutManager = GridLayoutManager(context, 1)
+
+		recyclerView.addItemDecoration(
+			GridSpacingItemDecoration(1, ViewUtils.dpToPx(requireContext(), 10).toInt(), true)
+		)
 
 		Log.d(TAG, "onCreateView: " + _cartList?.size)
 
