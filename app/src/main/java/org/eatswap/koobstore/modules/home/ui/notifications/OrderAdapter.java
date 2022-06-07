@@ -67,10 +67,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         var uri = Uri.parse(imgUrl);
         Glide.with(context).load(uri).into(holder.orderBookCover);
 
+        var totalItems = 0;
+        for (var i : order.getItems()) {
+            totalItems += i.getSecond();
+        }
+
         final var basicInfoStr = String.format(
                 "$%.2f\nTotal %d items",
                 order.getTotalAmount(),
-                order.getItems().size()
+                totalItems
         );
         holder.orderBasicInfo.setText(basicInfoStr);
 
