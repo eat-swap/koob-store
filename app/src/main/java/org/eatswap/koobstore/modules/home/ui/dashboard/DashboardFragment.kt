@@ -101,6 +101,8 @@ class DashboardFragment : Fragment() {
 						ZoneOffset.UTC), totalAmount)
 					orderService.insert(order)
 
+					cartService.removeAllByUserId(LoginService.loggedInUserId!!.toString())
+
 					dialog.dismiss()
 				}
 				.setNegativeButton("Cancel") { dialog, _ ->

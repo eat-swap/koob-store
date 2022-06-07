@@ -38,4 +38,8 @@ class CartService(private val context: KoobApplication) {
 		return cartViewModel.findByUserId(userId)
 	}
 
+	fun removeAllByUserId(userId: String) {
+		cartViewModel.deleteByUserId(userId)
+	}
+
 }
