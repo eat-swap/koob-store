@@ -7,13 +7,13 @@ import kotlinx.coroutines.launch
 
 class OrderViewModel(private val orderEntityDao: OrderEntityDao) : ViewModel() {
 
-	private fun insert(orderEntity: OrderEntity) {
+	fun insert(orderEntity: OrderEntity) {
 		viewModelScope.launch {
 			orderEntityDao.insert(orderEntity)
 		}
 	}
 
-	private fun update(orderEntity: OrderEntity) {
+	fun update(orderEntity: OrderEntity) {
 		viewModelScope.launch {
 			orderEntityDao.update(orderEntity)
 		}

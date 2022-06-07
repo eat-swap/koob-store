@@ -22,4 +22,7 @@ data class OrderEntity(
 	@ColumnInfo(name = "created_at")
 	val createdAt: Long, // Timestamp
 
+	@ColumnInfo(name = "total_amount")
+	val totalAmount: Double
+
 )

@@ -7,8 +7,9 @@ import org.eatswap.koobstore.modules.book.data.BookDao
 data class Order(
 	val id: Int,
 	val userId: Int,
-	val items: List<Pair<Book, Int>>,
+	val items: MutableList<Pair<Book, Int>>,
 	val createdAt: Long, // Timestamp
+	val totalAmount: Double,
 ) {
 	companion object {
 		fun of(orderEntity: OrderEntity, bookDao: BookDao) : Order {
@@ -28,8 +29,27 @@ data class Order(
 				orderEntity.id,
 				orderEntity.userId,
 				items,
-				orderEntity.createdAt
+				orderEntity.createdAt,
+				orderEntity.totalAmount,
 			)
 		}
 	}
+
+	fun toEntity() : OrderEntity {
+		val itemIdCount = StringBuilder()
+		for (item in items) {
+			itemIdCount.append(item.first.id)
+			itemIdCount.append(',')
+			itemIdCount.append(item.second)
+			itemIdCount.append(',')
+		}
+		return OrderEntity(
+			id,
+			userId,
+			itemIdCount.toString().substring(0 .. itemIdCount.length - 2),
+			createdAt,
+			totalAmount,
+		)
+	}
+
 }
