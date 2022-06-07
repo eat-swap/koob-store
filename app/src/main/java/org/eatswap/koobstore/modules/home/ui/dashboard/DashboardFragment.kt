@@ -108,6 +108,7 @@ class DashboardFragment : Fragment() {
 				.setNegativeButton("Cancel") { dialog, _ ->
 					dialog.dismiss()
 				}
+				.show()
 
 		}
 
