@@ -14,7 +14,7 @@
 
 	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="160dp"
+		android:layout_height="120dp"
 		android:orientation="horizontal">
 
 		<ImageView
@@ -34,19 +34,20 @@
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				android:layout_weight="2"
+				android:layout_weight="1"
+				android:gravity="end | center"
+				android:layout_marginEnd="24dp"
+				android:textColor="@color/black"
 				android:id="@+id/order_basic_info"
-				android:textSize="16sp" />
+				android:textSize="24sp" />
 
 			<Button
 				android:layout_width="wrap_content"
-				android:layout_height="0dp"
-				android:layout_weight="1"
+				android:layout_height="wrap_content"
 				android:layout_gravity="end"
+				android:text="@string/view_details"
 				style="@style/Widget.Material3.Button.TextButton"
 				android:id="@+id/button_order_details" />
-
-
 
 		</LinearLayout>
 
