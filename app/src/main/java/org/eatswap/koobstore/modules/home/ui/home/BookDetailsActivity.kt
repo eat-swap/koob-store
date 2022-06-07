@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.databinding.ActivityBookDetailsBinding
 import org.eatswap.koobstore.modules.book.services.BookService
+import org.eatswap.koobstore.modules.cart.CartService
 
 class BookDetailsActivity : AppCompatActivity() {
 
@@ -17,11 +18,15 @@ class BookDetailsActivity : AppCompatActivity() {
 	private var _bookService: BookService? = null
 	private val bookService get() = _bookService!!
 
+	private var _cartService: CartService? = null
+	private val cartService get() = _cartService!!
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
 		_binding = ActivityBookDetailsBinding.inflate(layoutInflater)
 		_bookService = BookService(this.application as KoobApplication)
+		_cartService = CartService(this.application as KoobApplication)
 
 		val v = binding.root
 		val intent = this.intent!!
@@ -38,6 +43,7 @@ class BookDetailsActivity : AppCompatActivity() {
 
 		binding.buttonAddCart.setOnClickListener {
 			Toast.makeText(this, "Added to cart: ${book.title} | ${String.format("$%.2f", book.price)}", Toast.LENGTH_SHORT).show()
+			cartService.addItem(book.id)
 		}
 
 		setContentView(v)
