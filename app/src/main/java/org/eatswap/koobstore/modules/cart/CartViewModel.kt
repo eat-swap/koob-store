@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class CartViewModel(private val cartDao: CartDao) : ViewModel() {
 
@@ -32,7 +33,9 @@ class CartViewModel(private val cartDao: CartDao) : ViewModel() {
 
 	// findByUserIdAndBookId
 	fun findByUserIdAndBookId(userId: String, bookId: String) : Cart? {
-		return cartDao.findByUserIdAndBookId(userId, bookId)
+		return runBlocking {
+			cartDao.findByUserIdAndBookId(userId, bookId)
+		}
 	}
 
 	// deleteByUserId
