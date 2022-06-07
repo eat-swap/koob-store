@@ -28,7 +28,9 @@ class CartViewModel(private val cartDao: CartDao) : ViewModel() {
 
 	// findByUserId
 	fun findByUserId(userId: String) : List<Cart> {
-		return cartDao.findByUserId(userId)
+		return runBlocking {
+			cartDao.findByUserId(userId)
+		}
 	}
 
 	// findByUserIdAndBookId

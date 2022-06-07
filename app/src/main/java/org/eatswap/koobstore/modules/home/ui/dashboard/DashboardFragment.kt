@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.eatswap.koobstore.KoobApplication
+import org.eatswap.koobstore.R
 import org.eatswap.koobstore.databinding.FragmentDashboardBinding
 import org.eatswap.koobstore.modules.book.services.BookService
 import org.eatswap.koobstore.modules.cart.Cart
@@ -41,14 +43,22 @@ class DashboardFragment : Fragment() {
 		_bookService = BookService(requireActivity().application as KoobApplication)
 		_cartService = CartService(requireActivity().application as KoobApplication)
 
-
 		val root: View = binding.root
 
-		_cartList = cartService.findAllByUserId(LoginService.loggedInUserId!!.toString())
+		_cartList = listOf(
+			Cart(
+			1,
+			1,
+			1,
+			10
+		)
+		)
 
-		val recyclerView = binding.recyclerViewCart
+		// cartService.findAllByUserId(LoginService.loggedInUserId!!.toString())
 
-		recyclerView.layoutManager = LinearLayoutManager(context)
+		val recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view_cart)
+
+		recyclerView.layoutManager = GridLayoutManager(context, 1)
 
 		recyclerView.adapter = CartAdapter(
 			_cartList!!,
