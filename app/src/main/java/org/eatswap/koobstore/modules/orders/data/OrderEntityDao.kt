@@ -15,9 +15,9 @@ interface OrderEntityDao {
 	suspend fun delete(orderEntity: OrderEntity)
 
 	@Query("SELECT * FROM orders WHERE id = :id")
-	fun findById(id: String): OrderEntity?
+	suspend fun findById(id: String): OrderEntity?
 
 	@Query("SELECT * FROM orders WHERE user_id = :userId")
-	fun findByUserId(userId: String): List<OrderEntity>
+	suspend fun findByUserId(userId: String): List<OrderEntity>
 
 }

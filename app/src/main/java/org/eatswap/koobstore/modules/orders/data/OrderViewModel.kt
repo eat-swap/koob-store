@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class OrderViewModel(private val orderEntityDao: OrderEntityDao) : ViewModel() {
 
@@ -28,12 +29,16 @@ class OrderViewModel(private val orderEntityDao: OrderEntityDao) : ViewModel() {
 
 	// findById
 	fun findById(id: Long): OrderEntity? {
-		return orderEntityDao.findById(id.toString())
+		return runBlocking {
+			orderEntityDao.findById(id.toString())
+		}
 	}
 
 	// findByUserId
 	fun findByUserId(userId: String): List<OrderEntity> {
-		return orderEntityDao.findByUserId(userId)
+		return runBlocking {
+			orderEntityDao.findByUserId(userId)
+		}
 	}
 
 }
