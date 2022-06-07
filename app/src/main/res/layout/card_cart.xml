@@ -36,7 +36,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				android:layout_weight="1"
-				android:textSize="20sp"
+				android:textSize="22sp"
 				android:gravity="center"
 				android:textColor="@color/black"
 				android:id="@+id/cart_book_title"
@@ -53,6 +53,10 @@
 					style="@style/Widget.Material3.Button.OutlinedButton"
 					android:layout_weight="1"
 					android:id="@+id/cart_book_remove"
+
+					android:textSize="28sp"
+					android:layout_marginStart="5dp"
+
 					android:text="@string/cart_remove" />
 
 				<TextView
@@ -68,6 +72,10 @@
 					style="@style/Widget.Material3.Button.OutlinedButton"
 					android:layout_weight="1"
 					android:id="@+id/cart_book_add"
+
+					android:textSize="28sp"
+					android:layout_marginEnd="5dp"
+
 					android:text="@string/cart_add" />
 
 			</LinearLayout>
