@@ -34,6 +34,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     final private CartService cartService;
 
+    final private TextView totalPriceView;
+
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         CardView cardView;
@@ -93,12 +95,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 cart.setQuantity(cart.getQuantity() - 1);
                 notifyItemChanged(position);
             }
+            totalPriceView.setText(
+                    String.format("$%.2f", Double.parseDouble(totalPriceView.getText().toString().substring(1)) - book.getPrice())
+            );
         });
 
         holder.cartBookAdd.setOnClickListener(v -> {
             cartService.addItem(cart.getBookId());
             cart.setQuantity(cart.getQuantity() + 1);
             notifyItemChanged(position);
+            totalPriceView.setText(
+                    String.format("$%.2f", Double.parseDouble(totalPriceView.getText().toString().substring(1)) + book.getPrice())
+            );
         });
     }
 
@@ -107,9 +115,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         return carts.size();
     }
 
-    public CartAdapter(List<Cart> carts, BookService bookService, CartService cartService) {
+    public CartAdapter(List<Cart> carts, BookService bookService, CartService cartService, TextView totalPriceView) {
         this.carts = carts;
         this.bookService = bookService;
         this.cartService = cartService;
+        this.totalPriceView = totalPriceView;
     }
 }

@@ -7,11 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.internal.ViewUtils
 import org.eatswap.koobstore.KoobApplication
@@ -22,7 +20,6 @@ import org.eatswap.koobstore.modules.cart.Cart
 import org.eatswap.koobstore.modules.cart.CartService
 import org.eatswap.koobstore.modules.user.services.LoginService
 import org.eatswap.koobstore.utils.ui.GridSpacingItemDecoration
-import kotlin.math.log
 
 class DashboardFragment : Fragment() {
 
@@ -53,6 +50,13 @@ class DashboardFragment : Fragment() {
 		val root: View = binding.root
 
 		_cartList = cartService.findAllByUserId(LoginService.loggedInUserId!!.toString())
+		var total: Double = 0.0
+		for (cart in _cartList!!) {
+			val book = bookService.findById(cart.bookId)!!
+			total += book.price * cart.quantity
+		}
+		binding.cartTotalPrice.text = String.format("$%.2f", total)
+
 
 		val recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view_cart)
 
@@ -67,7 +71,8 @@ class DashboardFragment : Fragment() {
 		recyclerView.adapter = CartAdapter(
 			_cartList!!,
 			bookService,
-			cartService
+			cartService,
+			binding.cartTotalPrice,
 		)
 
 		return root

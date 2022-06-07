@@ -39,4 +39,5 @@
 	<string name="view_details">View Details</string>
 	<string name="cart_remove">-</string>
 	<string name="cart_add">+</string>
+	<string name="checkout">Checkout</string>
 </resources>
