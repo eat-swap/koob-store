@@ -1,4 +1,4 @@
-package org.eatswap.koobstore.modules.home;
+package org.eatswap.koobstore.modules.home.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide;
 
 import org.eatswap.koobstore.R;
 import org.eatswap.koobstore.modules.book.data.Book;
-import org.eatswap.koobstore.modules.home.ui.home.BookDetailsActivity;
 
 import java.util.List;
 
@@ -29,8 +28,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
+
         ImageView imageView;
+
         TextView titleView;
+
         TextView priceView;
 
         Button detailsButton;

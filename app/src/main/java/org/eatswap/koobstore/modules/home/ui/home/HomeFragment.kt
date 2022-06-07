@@ -14,7 +14,6 @@ import org.eatswap.koobstore.R
 import org.eatswap.koobstore.databinding.FragmentHomeBinding
 import org.eatswap.koobstore.modules.book.data.Book
 import org.eatswap.koobstore.modules.book.services.BookService
-import org.eatswap.koobstore.modules.home.BookAdapter
 import org.eatswap.koobstore.utils.ui.GridSpacingItemDecoration
 
 class HomeFragment : Fragment() {
@@ -45,7 +44,8 @@ class HomeFragment : Fragment() {
 		recyclerView.addItemDecoration(
 			GridSpacingItemDecoration(2, ViewUtils.dpToPx(requireContext(), 10).toInt(), true)
 		)
-		recyclerView.adapter = BookAdapter(bookList!!)
+		recyclerView.adapter =
+			BookAdapter(bookList!!)
 
 		return v
 	}

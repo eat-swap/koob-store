@@ -37,4 +37,6 @@
 	<string name="detailed_image">Detailed Image</string>
 	<string name="add_to_cart">Add to Cart</string>
 	<string name="view_details">View Details</string>
+	<string name="cart_remove">-</string>
+	<string name="cart_add">+</string>
 </resources>
