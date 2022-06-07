@@ -48,9 +48,6 @@ class DashboardFragment : Fragment() {
 		container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View {
-		val dashboardViewModel =
-			ViewModelProvider(this).get(DashboardViewModel::class.java)
-
 		_binding = FragmentDashboardBinding.inflate(inflater, container, false)
 		_bookService = BookService(requireActivity().application as KoobApplication)
 		_cartService = CartService(requireActivity().application as KoobApplication)
