@@ -34,4 +34,8 @@ class CartService(private val context: KoobApplication) {
 		} ?: false
 	}
 
+	fun findAllByUserId(userId: String) : List<Cart> {
+		return cartViewModel.findByUserId(userId)
+	}
+
 }

@@ -7,15 +7,27 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import org.eatswap.koobstore.KoobApplication
 import org.eatswap.koobstore.databinding.FragmentDashboardBinding
+import org.eatswap.koobstore.modules.book.services.BookService
+import org.eatswap.koobstore.modules.cart.Cart
+import org.eatswap.koobstore.modules.cart.CartService
+import org.eatswap.koobstore.modules.user.services.LoginService
 
 class DashboardFragment : Fragment() {
 
-	private var _binding: FragmentDashboardBinding? = null
+	private var _cartList: List<Cart>? = null
 
-	// This property is only valid between onCreateView and
-	// onDestroyView.
+	private var _binding: FragmentDashboardBinding? = null
 	private val binding get() = _binding!!
+
+	private var _bookService: BookService? = null
+	private val bookService get() = _bookService!!
+
+	private var _cartService: CartService? = null
+	private val cartService get() = _cartService!!
 
 	override fun onCreateView(
 		inflater: LayoutInflater,
@@ -26,12 +38,24 @@ class DashboardFragment : Fragment() {
 			ViewModelProvider(this).get(DashboardViewModel::class.java)
 
 		_binding = FragmentDashboardBinding.inflate(inflater, container, false)
+		_bookService = BookService(requireActivity().application as KoobApplication)
+		_cartService = CartService(requireActivity().application as KoobApplication)
+
+
 		val root: View = binding.root
 
-		val textView: TextView = binding.textDashboard
-		dashboardViewModel.text.observe(viewLifecycleOwner) {
-			textView.text = it
-		}
+		_cartList = cartService.findAllByUserId(LoginService.loggedInUserId!!.toString())
+
+		val recyclerView = binding.recyclerViewCart
+
+		recyclerView.layoutManager = LinearLayoutManager(context)
+
+		recyclerView.adapter = CartAdapter(
+			_cartList!!,
+			bookService,
+			cartService
+		)
+
 		return root
 	}
 
