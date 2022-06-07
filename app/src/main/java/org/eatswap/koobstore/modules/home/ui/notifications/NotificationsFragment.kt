@@ -40,7 +40,7 @@ class NotificationsFragment : Fragment() {
 		bookService = BookService(requireActivity().application as KoobApplication)
 
 		orderList = mutableListOf()
-		val orderEntities = orderService.findByUserId(LoginService.loggedInUserId!!.toLong())
+		val orderEntities = orderService.findByUserId(LoginService.loggedInUserId!!)
 		for (orderEntity in orderEntities) {
 			orderList.add(Order.of(orderEntity, (requireActivity().application as KoobApplication).database.bookDao()))
 		}
