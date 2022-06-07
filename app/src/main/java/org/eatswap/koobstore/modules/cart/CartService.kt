@@ -21,4 +21,17 @@ class CartService(private val context: KoobApplication) {
 		}
 	}
 
+	fun removeItem(bookId: Int) : Boolean {
+		return cartViewModel.findByUserIdAndBookId(LoginService.loggedInUserId!!.toString(), bookId.toString())?.let {
+			if (it.quantity > 1) {
+				--it.quantity
+				cartViewModel.update(it)
+				false
+			} else {
+				cartViewModel.delete(it)
+				true
+			}
+		} ?: false
+	}
+
 }
