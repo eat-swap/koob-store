@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,8 @@ class HomeFragment : Fragment() {
 
 	private lateinit var categoryArray: Array<String>
 
+	private lateinit var allBooks: List<Book>
+
 	@SuppressLint("RestrictedApi")
 	override fun onCreateView(
 		inflater: LayoutInflater,
@@ -48,6 +51,7 @@ class HomeFragment : Fragment() {
 		val v: View = binding.root
 
 		bookList = bookService.findAll()
+		allBooks = bookService.findAll()
 
 		val recyclerView = v.findViewById<RecyclerView>(R.id.recycler_view_browse)!!
 		recyclerView.layoutManager = GridLayoutManager(context, 2)
@@ -80,6 +84,23 @@ class HomeFragment : Fragment() {
 				}
 				Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
 			}
+
+		binding.textInputLayoutSearch.editText?.setOnKeyListener { _, keyCode, event ->
+			if (event.action != KeyEvent.ACTION_DOWN || keyCode != KeyEvent.KEYCODE_ENTER) {
+				return@setOnKeyListener false
+			}
+			val str = binding.textInputLayoutSearch.editText?.text.toString()
+			bookList = allBooks.fold(mutableListOf<Book>()) { acc, book ->
+				if (book.title.contains(str, true)) {
+					acc.add(book)
+				}
+				acc
+			}
+			recyclerView.adapter =
+				BookAdapter(bookList!!)
+
+			true
+		}
 
 		return v
 	}
